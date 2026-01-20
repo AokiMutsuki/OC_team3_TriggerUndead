@@ -12,5 +12,6 @@ public:
 	Vector3 m_position;
 	CharacterController m_characterController;
 	Vector3 m_moveSpeed;
+	Vector3 m_rotation;
 };
 

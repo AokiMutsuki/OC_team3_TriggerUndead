@@ -51,5 +51,5 @@ void Player::Move()
 
 void Player::Render(RenderContext& rc)
 {
-	m_playerRender.Draw(rc);
+	//m_playerRender.Draw(rc);
 }
