@@ -3,6 +3,7 @@
 #include "Level3DRender/LevelRender.h"
 
 class Player;
+class FPSCamera;
 
 class Game : public IGameObject
 {
@@ -15,5 +16,6 @@ public:
 
 private:
 	Player* m_player;
+	FPSCamera* m_fpscamera;
 };
 
