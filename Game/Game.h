@@ -4,6 +4,7 @@
 
 class Player;
 class FPSCamera;
+class Stage;
 
 class Game : public IGameObject
 {
@@ -17,5 +18,6 @@ public:
 private:
 	Player* m_player;
 	FPSCamera* m_fpscamera;
+	Stage* m_stage;
 };
 

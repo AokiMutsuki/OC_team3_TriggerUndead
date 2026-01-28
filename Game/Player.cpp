@@ -4,7 +4,7 @@
 Player::Player()
 {
 	m_playerRender.Init("Assets/modelData/unityChan.tkm");
-	m_characterController.Init(25.0f, 75.0f, m_position);
+	m_characterController.Init(55.0f, 105.0f, m_position);
 }
 
 Player::~Player()
@@ -34,11 +34,37 @@ void Player::Move()
 
     stickL.y = g_pad[0]->GetLStickYF();
 
+    //カメラの前方向と右方向のベクトルを持ってくる
+
+    Vector3 forward = g_camera3D->GetForward();
+    Vector3 rigth = g_camera3D->GetRight();
+    
+    //y方向には動かさない
+    forward.y = 0.0f;
+    forward.Normalize();
+    rigth.y = 0.0f;
+    rigth.Normalize();
+
+    //スティックの入力量を乗算する
+    forward *= stickL.y * 230.0f;
+    rigth *= stickL.x * 230.0f;
+
+    m_moveSpeed += rigth + forward;
+
     //移動速度にスティックの入力量を加算する。
 
-    m_moveSpeed.x += stickL.x * 120.0f;
+    //m_moveSpeed.x += stickL.x * 1500.0f;
 
-    m_moveSpeed.z += stickL.y * 120.0f;
+    //m_moveSpeed.z += stickL.y * 1500.0f;
+
+    constexpr float gravity = -980.0f;
+    m_moveSpeed.y += gravity * (1.0f / 60.0f);
+
+    if (m_characterController.IsOnGround()) 
+    {
+        m_moveSpeed.y = 0.0f;
+    }
+
 
     //キャラクターコントローラーを使って座標を移動させる。
 
