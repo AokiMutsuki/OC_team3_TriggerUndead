@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Level3DRender/LevelRender.h"
 
@@ -19,5 +19,6 @@ private:
 	Player* m_player;
 	FPSCamera* m_fpscamera;
 	Stage* m_stage;
+	SkyCube* m_skyCube;
 };
 
